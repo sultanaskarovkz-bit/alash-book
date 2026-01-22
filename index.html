@@ -88,9 +88,14 @@
         .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
         .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
         
-        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; gap: 25px; }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 80px 20px 40px; }
         .mobile-nav.active { display: flex; }
-        .mobile-nav a { color: var(--text-dark); text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; }
+        .mobile-nav a { color: var(--text-dark); text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; padding: 10px 20px; transition: color 0.3s; }
+        .mobile-nav a:hover { color: var(--gold); }
+        .mobile-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: var(--cream); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--text-dark); transition: all 0.3s; }
+        .mobile-close:hover { background: var(--gold); color: white; }
+        .mobile-lang-switch { display: flex; gap: 10px; margin-top: 20px; }
+        .mobile-lang-switch .lang-btn { padding: 12px 24px; font-size: 1rem; }
         
         /* Hero */
         .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: var(--brown); padding-top: 80px; }
@@ -228,15 +233,54 @@
             .logo { height: 45px; }
             .nav-links, .header-cta, .lang-switch { display: none; }
             .mobile-menu-btn { display: flex; }
-            section { padding: 70px 4%; }
-            .hero { padding-top: 70px; }
-            .advantages-grid { grid-template-columns: 1fr; max-width: 400px; }
-            .authors-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
-            .author-img { width: 140px; height: 140px; }
-            .book-card { width: 160px; }
-            .book-card img { height: 220px; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            section { padding: 60px 4%; }
+            .hero { padding-top: 70px; min-height: auto; padding-bottom: 60px; }
+            .hero-content { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-text { order: 2; }
+            .hero-badge-container { order: 1; }
+            .hero-badge-img { width: 150px; height: 150px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 0.95rem; margin: 0 auto 25px; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+            .hero-stat { min-width: 100px; }
+            .hero-stat-number { font-size: 1.8rem; }
+            .hero-stat-label { font-size: 0.75rem; }
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 1.6rem; }
+            .advantages-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .advantage-card { padding: 30px 20px; }
+            .authors-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .author-card { padding: 10px; }
+            .author-img { width: 120px; height: 120px; border-width: 3px; }
+            .author-card h4 { font-size: 0.95rem; }
+            .author-card p { font-size: 0.75rem; }
+            .book-card { width: 140px; }
+            .book-card img { height: 190px; }
+            .services-grid { gap: 15px; }
+            .service-item { padding: 20px; flex-direction: column; text-align: center; }
+            .service-icon { margin: 0 auto 15px; }
+            .contact-grid { gap: 40px; }
+            .contact-form { padding: 25px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+            .footer-brand { text-align: center; }
+            .footer-brand .footer-logo { margin: 0 auto 15px; }
             .footer-social { justify-content: center; }
+            .footer-links { text-align: center; }
+            .footer-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px; }
+            .footer-links li { margin-bottom: 0; }
+            .fixed-cta { bottom: 15px; right: 15px; }
+            .fixed-btn { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero-badge-img { width: 120px; height: 120px; }
+            .btn { padding: 14px 24px; font-size: 0.9rem; }
+            .authors-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .author-img { width: 100px; height: 100px; }
+            .author-card h4 { font-size: 0.85rem; }
+            .author-card p { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -264,18 +308,22 @@
     </header>
 
     <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
         <a href="#advantages" onclick="closeMobileMenu()" class="lang-kz">Артықшылықтар</a>
         <a href="#advantages" onclick="closeMobileMenu()" class="lang-ru">Преимущества</a>
         <a href="#books" onclick="closeMobileMenu()" class="lang-kz">Кітаптар</a>
         <a href="#books" onclick="closeMobileMenu()" class="lang-ru">Книги</a>
         <a href="#authors" onclick="closeMobileMenu()" class="lang-kz">Авторлар</a>
         <a href="#authors" onclick="closeMobileMenu()" class="lang-ru">Авторы</a>
+        <a href="#services" onclick="closeMobileMenu()" class="lang-kz">Қызметтер</a>
+        <a href="#services" onclick="closeMobileMenu()" class="lang-ru">Услуги</a>
         <a href="#contact" onclick="closeMobileMenu()" class="lang-kz">Байланыс</a>
         <a href="#contact" onclick="closeMobileMenu()" class="lang-ru">Контакты</a>
-        <div class="lang-switch" style="margin-top: 20px;">
+        <div class="mobile-lang-switch">
             <button class="lang-btn active" onclick="setLang('kz')">KZ</button>
             <button class="lang-btn" onclick="setLang('ru')">RU</button>
         </div>
+        <a href="https://wa.me/77778800805" class="btn btn-primary" style="margin-top: 10px;">📞 WhatsApp</a>
     </div>
 
     <section class="hero">
