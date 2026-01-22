@@ -38,23 +38,36 @@
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
         
-        /* Language */
+        /* Language System */
         .lang-ru { display: none !important; }
+        h1.lang-ru, h2.lang-ru, h3.lang-ru, h4.lang-ru, p.lang-ru, div.lang-ru, span.lang-ru, a.lang-ru, label.lang-ru, button.lang-ru { display: none !important; }
+        
         body.lang-ru .lang-kz { display: none !important; }
+        body.lang-ru h1.lang-kz, body.lang-ru h2.lang-kz, body.lang-ru h3.lang-kz, body.lang-ru h4.lang-kz, body.lang-ru p.lang-kz, body.lang-ru div.lang-kz, body.lang-ru span.lang-kz, body.lang-ru a.lang-kz, body.lang-ru label.lang-kz, body.lang-ru button.lang-kz { display: none !important; }
+        
         body.lang-ru .lang-ru { display: block !important; }
-        body.lang-ru span.lang-ru, body.lang-ru a.lang-ru { display: inline !important; }
+        body.lang-ru span.lang-ru { display: inline !important; }
+        body.lang-ru a.lang-ru { display: inline !important; }
+        
         .section-label.lang-kz { display: inline-flex !important; }
         .section-label.lang-ru { display: none !important; }
         body.lang-ru .section-label.lang-kz { display: none !important; }
         body.lang-ru .section-label.lang-ru { display: inline-flex !important; }
+        
         .form-group label.lang-kz { display: block !important; }
         .form-group label.lang-ru { display: none !important; }
         body.lang-ru .form-group label.lang-kz { display: none !important; }
         body.lang-ru .form-group label.lang-ru { display: block !important; }
+        
         .form-submit.lang-kz { display: block !important; }
         .form-submit.lang-ru { display: none !important; }
         body.lang-ru .form-submit.lang-kz { display: none !important; }
         body.lang-ru .form-submit.lang-ru { display: block !important; }
+        
+        .hero-stat-label.lang-kz { display: block !important; }
+        .hero-stat-label.lang-ru { display: none !important; }
+        body.lang-ru .hero-stat-label.lang-kz { display: none !important; }
+        body.lang-ru .hero-stat-label.lang-ru { display: block !important; }
         
         /* Header */
         header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 15px 5%; background: var(--white); box-shadow: var(--shadow); }
